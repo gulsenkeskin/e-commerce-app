@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -70,9 +69,9 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.pop(context);
                     },
                     child: const Text('NEXT')
-                )
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

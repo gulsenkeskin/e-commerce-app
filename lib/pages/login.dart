@@ -9,6 +9,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //Metin alanlarının değerlerini temizlemeyi mümkün kılmak için metinlerini kontrol etmek için TextEditingControllers ekleyeceğiz .
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 120.0,
             ),
             TextField(
+              controller: _usernameController,
               decoration: const InputDecoration(
                 filled: true,
                 labelText: 'Username',
@@ -41,12 +45,33 @@ class _LoginPageState extends State<LoginPage> {
               height: 12.0,
             ),
             TextField(
+              controller: _passwordController,
               decoration: const InputDecoration(
                 //filled:Metin alanının arka planını insanlara yardım için doldurur
                 filled: true, labelText: 'Password',
               ),
               //obscureText: truedeğeri, kullanıcının yazdığı girişi otomatik olarak parolalara uygun madde işaretleri ile değiştirir.
               obscureText: true,
+            ),
+            //button bar düğmeleri yatay olarak konumlandırır
+            ButtonBar(
+              children: [
+                TextButton(
+                    onPressed: () {
+                      //TODO : text field'ı temizle
+                      _usernameController.clear();
+                      _passwordController.clear();
+                    },
+                    child: const Text('CANCEL')
+                ),
+                ElevatedButton(
+                    onPressed: (){
+                      //TODO bi önceki sayfayı aç
+                      Navigator.pop(context);
+                    },
+                    child: const Text('NEXT')
+                )
+              ],
             )
           ],
         ),

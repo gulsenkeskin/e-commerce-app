@@ -1,37 +1,63 @@
+import 'package:e_commerce_app/models/product.dart';
+import 'package:e_commerce_app/models/products_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  List<Card> _buildGridCards(int count){
-    List<Card> cards= List.generate(
-      count,
-        (int index)=>  Card(
-          clipBehavior: Clip.antiAlias,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              AspectRatio(
-                aspectRatio: 18.0 / 11.0,
-                child: Image.asset('assets/diamond.png'),
+  List<Card> _buildGridCards(BuildContext context){
+    List<Product> products = ProductsRepository.loadProducts(Category.all);
+
+    if (products.isEmpty) {
+      return const <Card>[];
+    }
+
+    final ThemeData theme = Theme.of(context);
+    final NumberFormat formatter = NumberFormat.simpleCurrency(
+        locale: Localizations.localeOf(context).toString());
+
+    return products.map((product) {
+      return Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 18 / 11,
+              child: Image.asset(
+                product.assetName,
+                package: product.assetPackage,
+                //resmin bulunduğu alana göre genişlemesi için
+                fit: BoxFit.fitWidth,
               ),
-              Padding(
+            ),
+            Expanded(
+              child: Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
                 child: Column(
-                  //ön kenara metni hizalar
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:const [
-                    Text('Title'),
-                    SizedBox(height: 8.0),
-                    Text('Secondary Text'),
+                  children: <Widget>[
+                    Text(
+                      product.name,
+                      style: theme.textTheme.headline6,
+                      maxLines: 1,
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      formatter.format(product.price),
+                      style: theme.textTheme.subtitle2,
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-    );
-    return cards;
+      );
+    }).toList();
+
   }
 
 
@@ -76,7 +102,7 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         //childAspectRatio:Alan bir en-boy oranı (en fazla yükseklik) göre öğelerin boyutunu tanımlar.
         childAspectRatio: 8.0 / 9.0,
-        children: _buildGridCards(10)
+        children: _buildGridCards(context)
       ),
       //unu yapmak, klavyenin görünümünün ana sayfanın veya widget'larının boyutunu değiştirmemesini sağlar.
       resizeToAvoidBottomInset: false,

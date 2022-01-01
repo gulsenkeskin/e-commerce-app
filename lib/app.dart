@@ -9,6 +9,31 @@ final ThemeData _kShrineTheme = _buildShrineTheme();
 ThemeData _buildShrineTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
+    colorScheme: base.colorScheme.copyWith(
+      primary: kShrinePurple,
+      secondary: kShrinePurple,
+      error: kShrineErrorRed,
+    ),
+    scaffoldBackgroundColor: kShrineSurfaceWhite,
+    textTheme: _buildShrineTextTheme(base.textTheme),
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionColor: kShrinePurple,
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      focusedBorder: CutCornersBorder(
+        borderSide: BorderSide(
+          width: 2.0,
+          color: kShrinePurple,
+        ),
+      ),
+      border: CutCornersBorder(),
+    ),
+  );
+}
+
+ThemeData _buildShrineTheme2() {
+  final ThemeData base = ThemeData.light();
+  return base.copyWith(
       colorScheme: base.colorScheme.copyWith(
         primary: kShrinePink100,
         onPrimary: kShrineBrown900,

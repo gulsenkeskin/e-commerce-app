@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/colors.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -38,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Column(
               children: [
-                Image.asset("assets/diamond.png"),
+                Image.asset('assets/diamond.png', color: kShrineBlack),
                 const SizedBox(
                   height: 16.0,
                 ),

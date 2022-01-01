@@ -73,7 +73,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        //systemOverlayStyle: SystemUiOverlayStyle.dark,
         title: const Text('SHRINE'),
         leading: IconButton(
           icon: const Icon(

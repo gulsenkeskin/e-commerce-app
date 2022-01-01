@@ -23,16 +23,68 @@ class Backdrop extends StatefulWidget {
   _BackdropState createState() => _BackdropState();
 }
 
+//animasyonun sahip olmasını istediğim hız
+const double _kFlingVelocity = 2.0;
+
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
 
-  Widget _buildStack() {
+  //AnimationController, Animasyonları koordine eder ve animasyonu oynatmak , tersine çevirmel ve durdurmak için API sağlar
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+      value: 1.0,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  bool get _frontLayerVisible {
+    final AnimationStatus status = _controller.status;
+    return status == AnimationStatus.completed ||
+        status == AnimationStatus.forward;
+  }
+
+  void _toggleBackdropLayerVisibility() {
+    _controller.fling(
+        velocity: _frontLayerVisible ? -_kFlingVelocity : _kFlingVelocity);
+  }
+
+  Widget _buildStack(BuildContext context, BoxConstraints constraints) {
+    const double layerTitleHeight = 48.0;
+    final Size layerSize = constraints.biggest;
+    final double layerTop = layerSize.height - layerTitleHeight;
+
+    Animation<RelativeRect> layerAnimation = RelativeRectTween(
+      begin: RelativeRect.fromLTRB(
+          0.0, layerTop, 0.0, layerTop - layerSize.height),
+      end: const RelativeRect.fromLTRB(0.0, 0.0, 0.0, 0.0),
+    ).animate(_controller.view);
+
     return Stack(
       key: _backdropKey,
       children: [
-        widget.backLayer,
-        _FrontLayer(child: widget.frontLayer),
+        //excludesemantics ara katman görünür olmadığında backlayer'ın menü öğerlerini semantik ağacından hariç tutar
+        ExcludeSemantics(
+          child: widget.backLayer,
+          excluding: _frontLayerVisible,
+        ),
+        PositionedTransition(
+          rect: layerAnimation,
+          child: _FrontLayer(
+            child: widget.frontLayer,
+          ),
+        )
       ],
     );
   }
@@ -43,7 +95,10 @@ class _BackdropState extends State<Backdrop>
       brightness: Brightness.light,
       elevation: 0.0,
       titleSpacing: 0.0,
-      leading: const Icon(Icons.menu),
+      leading: IconButton(
+        icon: const Icon(Icons.menu),
+        onPressed: _toggleBackdropLayerVisibility,
+      ),
       title: const Text('SHRINE'),
       actions: <Widget>[
         IconButton(
@@ -65,7 +120,10 @@ class _BackdropState extends State<Backdrop>
     );
     return Scaffold(
       appBar: appBar,
-      body: _buildStack(),
+      //LayoutBuilder, bir pencere aracının kendisini yerleştirmek için üst parçacığının boyutunu bilmesi gerektiğinde kullanılır (ve üst öğe boyutu alt öğeye bağlı değildir.) LayoutBuilder, bir Widget döndüren bir işlev alır.
+      body: LayoutBuilder(
+        builder: _buildStack,
+      ),
     );
   }
 }

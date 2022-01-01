@@ -27,16 +27,12 @@ class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
 
-  // TODO: Add AnimationController widget (104)
-
-  // TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
   Widget _buildStack() {
     return Stack(
       key: _backdropKey,
-      children: <Widget>[
-        // TODO: Wrap backLayer in an ExcludeSemantics widget (104)
+      children: [
         widget.backLayer,
-        widget.frontLayer,
+        _FrontLayer(child: widget.frontLayer),
       ],
     );
   }
@@ -55,16 +51,14 @@ class _BackdropState extends State<Backdrop>
             Icons.search,
             semanticLabel: 'search',
           ),
-          onPressed: () {
-          },
+          onPressed: () {},
         ),
         IconButton(
           icon: const Icon(
             Icons.tune,
             semanticLabel: 'filter',
           ),
-          onPressed: () {
-          },
+          onPressed: () {},
         ),
       ],
       backwardsCompatibility: false,
@@ -72,6 +66,32 @@ class _BackdropState extends State<Backdrop>
     return Scaffold(
       appBar: appBar,
       body: _buildStack(),
+    );
+  }
+}
+
+class _FrontLayer extends StatelessWidget {
+  const _FrontLayer({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 16.0,
+      shape: const BeveledRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(46.0)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: child,
+          ),
+        ],
+      ),
     );
   }
 }

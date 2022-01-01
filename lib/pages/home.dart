@@ -71,6 +71,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
+  }
+
+  //eski build methodum
+  Widget oldbuild(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle.light,

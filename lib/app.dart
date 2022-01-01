@@ -1,4 +1,6 @@
 import 'package:e_commerce_app/colors.dart';
+import 'package:e_commerce_app/models/product.dart';
+import 'package:e_commerce_app/pages/backdrop.dart';
 import 'package:e_commerce_app/pages/home.dart';
 import 'package:e_commerce_app/pages/login.dart';
 import 'package:e_commerce_app/supplemental/cut_corners_border.dart';
@@ -88,7 +90,14 @@ class ShrineApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shrine',
-      home: const HomePage(),
+     // home: const HomePage(),
+      home: Backdrop(
+        currentCategory: Category.all,
+        frontLayer: const HomePage(),
+        backLayer: Container(color: kShrinePink100,),
+        frontTitle: const Text('SHRINE'),
+        backTitle: const Text('MENU'),
+      ),
       initialRoute: '/login',
       onGenerateRoute: _getRoute,
       theme: _kShrineTheme,

@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/colors.dart';
 import 'package:e_commerce_app/models/product.dart';
 import 'package:e_commerce_app/pages/backdrop.dart';
+import 'package:e_commerce_app/pages/category_menu_page.dart';
 import 'package:e_commerce_app/pages/home.dart';
 import 'package:e_commerce_app/pages/login.dart';
 import 'package:e_commerce_app/supplemental/cut_corners_border.dart';
@@ -49,14 +50,12 @@ ThemeData _buildShrineTheme2() {
       //input alanlarındaki dekorasyonu inputDecorationTheme ile tema haline getirdim
       inputDecorationTheme: const InputDecorationTheme(
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 2.0,
-            color: kShrineBrown900,
-          )
-        ),
+            borderSide: BorderSide(
+          width: 2.0,
+          color: kShrineBrown900,
+        )),
         border: CutCornersBorder(),
-      )
-  );
+      ));
 }
 
 TextTheme _buildShrineTextTheme(TextTheme base) {
@@ -82,19 +81,34 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
       );
 }
 
-
-class ShrineApp extends StatelessWidget {
+class ShrineApp extends StatefulWidget {
   const ShrineApp({Key? key}) : super(key: key);
+
+  @override
+  State<ShrineApp> createState() => _ShrineAppState();
+}
+
+class _ShrineAppState extends State<ShrineApp> {
+  Category _currentCategory = Category.all;
+  void _onCategoryTap(Category category) {
+    setState(() {
+      _currentCategory = category;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shrine',
-     // home: const HomePage(),
+      // home: const HomePage(),
       home: Backdrop(
-        currentCategory: Category.all,
+        currentCategory: _currentCategory,
         frontLayer: const HomePage(),
-        backLayer: Container(color: kShrinePink100,),
+        //arka plana CategoryMenuPage  ekledim
+        backLayer: CategoryMenuPage(
+          currentCategory: _currentCategory,
+          onCategoryTap: _onCategoryTap,
+        ),
         frontTitle: const Text('SHRINE'),
         backTitle: const Text('MENU'),
       ),

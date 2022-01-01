@@ -25,7 +25,7 @@ class TwoProductCardColumn extends StatelessWidget {
       double imageAspectRatio = heightOfImages >= 0.0
           ? constraints.biggest.width / heightOfImages
           : 49.0 / 33.0;
-      
+
       return ListView(
         physics: const ClampingScrollPhysics(),
         children: <Widget>[

@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/colors.dart';
 import 'package:e_commerce_app/pages/home.dart';
 import 'package:e_commerce_app/pages/login.dart';
+import 'package:e_commerce_app/supplemental/cut_corners_border.dart';
 import 'package:flutter/material.dart';
 
 final ThemeData _kShrineTheme = _buildShrineTheme();
@@ -26,7 +27,7 @@ ThemeData _buildShrineTheme() {
             color: kShrineBrown900,
           )
         ),
-        border: OutlineInputBorder(),
+        border: CutCornersBorder(),
       )
   );
 }

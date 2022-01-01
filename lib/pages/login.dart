@@ -16,17 +16,13 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordFocusNode = FocusNode();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _usernameFocusNode.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
     _passwordFocusNode.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 
@@ -61,8 +57,8 @@ class _LoginPageState extends State<LoginPage> {
                 labelText: 'Username',
                 labelStyle: TextStyle(
                   color: _usernameFocusNode.hasFocus
-                  ? Theme.of(context).colorScheme.secondary
-                  : _unfocusedColor,
+                      ? Theme.of(context).colorScheme.secondary
+                      : _unfocusedColor,
                 ),
               ),
               focusNode: _usernameFocusNode,
@@ -78,8 +74,8 @@ class _LoginPageState extends State<LoginPage> {
                 labelText: 'Password',
                 labelStyle: TextStyle(
                   color: _passwordFocusNode.hasFocus
-                    ? Theme.of(context).colorScheme.secondary
-                    : _unfocusedColor,
+                      ? Theme.of(context).colorScheme.secondary
+                      : _unfocusedColor,
                 ),
               ),
               focusNode: _passwordFocusNode,
@@ -90,22 +86,41 @@ class _LoginPageState extends State<LoginPage> {
             ButtonBar(
               children: [
                 TextButton(
-                    onPressed: () {
-                      //TODO : text field'ı temizle
-                      _usernameController.clear();
-                      _passwordController.clear();
-                    },
-                    child: const Text('CANCEL')),
-                ElevatedButton(
-                    onPressed: () {
-                      //TODO bi önceki sayfayı aç
-                      Navigator.pop(context);
-                    },
-                    child: const Text('NEXT'),
-                    style: ButtonStyle(
-                      //butona gölge ekler
-                      elevation: MaterialStateProperty.all(8.0),
+                  onPressed: () {
+                    //TODO : text field'ı temizle
+                    _usernameController.clear();
+                    _passwordController.clear();
+                  },
+                  child: const Text('CANCEL'),
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all(
+                      Theme.of(context).colorScheme.secondary,
                     ),
+                    shape: MaterialStateProperty.all(
+                      const BeveledRectangleBorder(
+                        //eğimli bir dikdörtgen kenarlık ekler
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(7.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    //TODO bi önceki sayfayı aç
+                    Navigator.pop(context);
+                  },
+                  child: const Text('NEXT'),
+                  style: ButtonStyle(
+                    //butona gölge ekler
+                    elevation: MaterialStateProperty.all(8.0),
+                    shape: MaterialStateProperty.all(
+                      const BeveledRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

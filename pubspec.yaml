@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  intl: ^0.17.0-nullsafety.2
+  shrine_images: ^2.0.1
 
 dev_dependencies:
   flutter_test:

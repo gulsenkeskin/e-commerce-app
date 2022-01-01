@@ -79,6 +79,13 @@
             </list>
           </value>
         </entry>
+        <entry key="intl">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="lints">
           <value>
             <list>
@@ -104,6 +111,13 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="shrine_images">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/shrine_images-2.0.1/lib" />
             </list>
           </value>
         </entry>
@@ -182,10 +196,12 @@
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.10/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/shrine_images-2.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.10.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/stream_channel-2.1.0/lib" />

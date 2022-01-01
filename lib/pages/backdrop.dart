@@ -71,9 +71,7 @@ class _BackdropState extends State<Backdrop>
     }
   }
 
-
-
-    Widget _buildStack(BuildContext context, BoxConstraints constraints) {
+  Widget _buildStack(BuildContext context, BoxConstraints constraints) {
     const double layerTitleHeight = 48.0;
     final Size layerSize = constraints.biggest;
     final double layerTop = layerSize.height - layerTitleHeight;
@@ -95,6 +93,7 @@ class _BackdropState extends State<Backdrop>
         PositionedTransition(
           rect: layerAnimation,
           child: _FrontLayer(
+            onTap: _toggleBackdropLayerVisibility,
             child: widget.frontLayer,
           ),
         )
@@ -144,8 +143,11 @@ class _BackdropState extends State<Backdrop>
 class _FrontLayer extends StatelessWidget {
   const _FrontLayer({
     Key? key,
+    this.onTap,
     required this.child,
   }) : super(key: key);
+
+  final VoidCallback? onTap;
   final Widget child;
 
   @override
@@ -158,6 +160,14 @@ class _FrontLayer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: onTap,
+            child: Container(
+              height: 40.0,
+              alignment: AlignmentDirectional.centerStart,
+            ),
+          ),
           Expanded(
             child: child,
           ),

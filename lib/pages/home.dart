@@ -7,7 +7,8 @@ import 'package:intl/intl.dart';
 
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final Category category;
+  const HomePage({this.category=Category.all, Key? key}) : super(key: key);
 
   List<Card> _buildGridCards(BuildContext context){
     List<Product> products = ProductsRepository.loadProducts(Category.all);
@@ -71,7 +72,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
+    return AsymmetricView(products: ProductsRepository.loadProducts(category));
   }
 
   //eski build methodum

@@ -103,7 +103,7 @@ class _ShrineAppState extends State<ShrineApp> {
       // home: const HomePage(),
       home: Backdrop(
         currentCategory: _currentCategory,
-        frontLayer: const HomePage(),
+        frontLayer: HomePage(category: _currentCategory),
         //arka plana CategoryMenuPage  ekledim
         backLayer: CategoryMenuPage(
           currentCategory: _currentCategory,

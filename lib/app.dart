@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
-ThemeData _buildShrineTheme() {
+ThemeData _buildShrineTheme2() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
     colorScheme: base.colorScheme.copyWith(
@@ -34,7 +34,7 @@ ThemeData _buildShrineTheme() {
   );
 }
 
-ThemeData _buildShrineTheme2() {
+ThemeData _buildShrineTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
       colorScheme: base.colorScheme.copyWith(

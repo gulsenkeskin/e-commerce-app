@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -122,16 +123,28 @@ class _BackdropState extends State<Backdrop>
         IconButton(
           icon: const Icon(
             Icons.search,
-            semanticLabel: 'search',
+            semanticLabel: 'login',
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const LoginPage()),
+            );
+          },
         ),
         IconButton(
           icon: const Icon(
             Icons.tune,
-            semanticLabel: 'filter',
+            semanticLabel: 'login',
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const LoginPage()),
+            );
+          },
         ),
       ],
       backwardsCompatibility: false,
@@ -212,7 +225,7 @@ class _BackdropTitle extends AnimatedWidget {
           width: 72.0,
           child: IconButton(
             padding: const EdgeInsets.only(right: 8.0),
-            onPressed: this.onPress,
+            onPressed: onPress,
             icon: Stack(children: <Widget>[
               Opacity(
                 opacity: animation.value,

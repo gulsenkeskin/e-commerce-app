@@ -101,7 +101,12 @@ class _LoginPageState extends State<LoginPage> {
                       //TODO bi önceki sayfayı aç
                       Navigator.pop(context);
                     },
-                    child: const Text('NEXT')),
+                    child: const Text('NEXT'),
+                    style: ButtonStyle(
+                      //butona gölge ekler
+                      elevation: MaterialStateProperty.all(8.0),
+                    ),
+                ),
               ],
             ),
           ],

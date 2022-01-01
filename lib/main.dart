@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/pages/login.dart';
+import 'package:e_commerce_app/app.dart';
 import 'package:flutter/material.dart';
 
 
-void main() => runApp(Login());
+void main() => runApp(const ShrineApp());

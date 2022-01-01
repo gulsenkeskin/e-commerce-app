@@ -1,18 +1,5 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: LoginPage(),
-    );
-  }
-}
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -35,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 80.0,
             ),
             Column(
-              children: <Widget>[
+              children:[
                 Image.asset("assets/diamond.png"),
                 const SizedBox(
                   height: 16.0,
@@ -67,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             //button bar düğmeleri yatay olarak konumlandırır
             ButtonBar(
-              children: <Widget>[
+              children:[
                 TextButton(
                     onPressed: () {
                       //TODO : text field'ı temizle

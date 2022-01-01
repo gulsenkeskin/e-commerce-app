@@ -37,17 +37,21 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  //Etiketleri ana eksenin sonuna (altına) taşıyın ve ortalanacak şekilde değiştirir
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       product.name,
                       style: theme.textTheme.headline6,
                       maxLines: 1,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 8.0),
                     Text(
                       formatter.format(product.price),
-                      style: theme.textTheme.subtitle2,
+                      style: theme.textTheme.caption,
                     ),
                   ],
                 ),

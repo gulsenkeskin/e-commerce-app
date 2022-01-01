@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/models/product.dart';
 import 'package:e_commerce_app/models/products_repository.dart';
+import 'package:e_commerce_app/supplemental/asymmetric_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 
@@ -71,6 +73,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
         title: const Text('SHRINE'),
         leading: IconButton(
           icon: const Icon(
@@ -102,16 +105,17 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: GridView.count(
+      body: AsymmetricView(products: ProductsRepository.loadProducts(Category.all)),
+      //GridView.count(
         //Flutter'daki çapraz eksen , kaydırma yapmayan eksen anlamına gelir. Kaydırma yönüne ana eksen denir . Bu nedenle, GridView'in varsayılan olarak yaptığı gibi dikey kaydırmanız varsa, çapraz eksen yataydır.
-        crossAxisCount: 2,
-        padding: const EdgeInsets.all(16.0),
+        //crossAxisCount: 2,
+        //padding: const EdgeInsets.all(16.0),
         //childAspectRatio:Alan bir en-boy oranı (en fazla yükseklik) göre öğelerin boyutunu tanımlar.
-        childAspectRatio: 8.0 / 9.0,
-        children: _buildGridCards(context)
-      ),
+       // childAspectRatio: 8.0 / 9.0,
+       // children: _buildGridCards(context)
+      //),
       //unu yapmak, klavyenin görünümünün ana sayfanın veya widget'larının boyutunu değiştirmemesini sağlar.
-      resizeToAvoidBottomInset: false,
+      //resizeToAvoidBottomInset: false,
     );
   }
 }

@@ -1,4 +1,4 @@
-# E Commerce App for Shrine
+# E Commerce App for Shrine :octocat:
 
 e-commerce app that sells clothing and home goods.
 
